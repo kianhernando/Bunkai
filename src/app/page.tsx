@@ -7,8 +7,14 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<string[]>([]);
 
-  function handleClick() {
-    setResult(input.split(""));
+  async function handleClick() {
+    const response = await fetch("/api/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: input }),
+    });
+    const data = await response.json();
+    setResult(data.words);
   }
 
   return (
