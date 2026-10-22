@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Chunk from "@/components/Chunk";
+import type { Word } from "@/lib/analysis/types";
 
 export default function Home() {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState<string[]>([]);
+  const [result, setResult] = useState<Word[]>([]);
 
   async function handleClick() {
     const response = await fetch("/api/analyze", {
@@ -28,8 +29,8 @@ export default function Home() {
         Break it down
       </button>
       <div className="flex flex-wrap gap-2">
-        {result.map((char, index) => (
-          <Chunk key={index} text={char} hint={`Character #${index + 1}`} />
+        {result.map((word, index) => (
+          <Chunk key={index} text={word.text} reading={word.reading} hint={`Word #${index + 1}`} />
         ))}
       </div>
     </main>
