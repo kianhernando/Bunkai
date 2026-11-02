@@ -43,6 +43,8 @@ next-env.d.ts
 # generated data (see CLAUDE.md)
 /data/*
 !/data/.gitkeep
+data/*.json
+!/data/dictionary.sqlite
 
 # local notes
 CLAUDE.md
