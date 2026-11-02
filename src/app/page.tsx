@@ -30,7 +30,13 @@ export default function Home() {
       </button>
       <div className="flex flex-wrap gap-2">
         {result.map((word, index) => (
-          <Chunk key={index} text={word.text} reading={word.reading} hint={`Word #${index + 1}`} />
+          <Chunk
+            key={index}
+            text={word.text}
+            reading={word.reading}
+            pos={word.pos}
+            hint={`Word #${index + 1}`}
+          />
         ))}
       </div>
     </main>

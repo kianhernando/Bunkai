@@ -1,4 +1,5 @@
 export type Word = {
-    text: string;
-    reading: string;
+  text: string;
+  reading: string;
+  pos: string;
 };

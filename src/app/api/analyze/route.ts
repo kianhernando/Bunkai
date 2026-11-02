@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     const words: Word[] = tokens.map((t) => ({
         text: t.surface_form,
         reading: toHiragana(t.reading ?? t.surface_form),
+        pos: t.pos,
     }));
     return NextResponse.json({ words });
 }
