@@ -24,15 +24,17 @@ type ChunkProps = {
   text: string;
   reading: string;
   pos: string;
-  hint: string;
+  base: string;
+  meaning?: string;
 };
 
-export default function Chunk({ text, reading, pos, hint }: ChunkProps) {
+export default function Chunk({ text, reading, pos, base, meaning }: ChunkProps) {
   const [hovered, setHovered] = useState(false);
 
   const backgroundColor = colors[pos] ?? "#E5E7EB";
   const textColor = pos === "助詞" ? "#FFFFFF" : "#1B1D22";
   const label = labels[pos] ?? pos;
+  const showBase = base !== text;
 
   return (
     <span
@@ -49,8 +51,9 @@ export default function Chunk({ text, reading, pos, hint }: ChunkProps) {
       </span>
       <span className="text-[10px] uppercase tracking-wide text-gray-500">{label}</span>
       {hovered && (
-        <span className="absolute top-full left-0 mt-2 w-40 bg-gray-900 text-white text-sm rounded p-2 z-10">
-          {hint}
+        <span className="absolute top-full left-0 mt-2 w-56 bg-gray-900 text-white text-sm rounded p-3 z-10 flex flex-col gap-1">
+          {showBase && <span className="font-bold">{base}</span>}
+          <span>{meaning ?? "No dictionary entry yet"}</span>
         </span>
       )}
     </span>

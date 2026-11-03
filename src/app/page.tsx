@@ -28,14 +28,15 @@ export default function Home() {
       <button className="bg-black text-white rounded p-2" onClick={handleClick}>
         Break it down
       </button>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         {result.map((word, index) => (
           <Chunk
             key={index}
             text={word.text}
             reading={word.reading}
             pos={word.pos}
-            hint={`Word #${index + 1}`}
+            base={word.base}
+            meaning={word.meaning}
           />
         ))}
       </div>
