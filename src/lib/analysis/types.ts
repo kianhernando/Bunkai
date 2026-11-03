@@ -3,6 +3,7 @@ export type Word = {
   reading: string;
   pos: string;
   base: string;
+  meaning?: string;
 };
 
 export type DictionaryRow = {
